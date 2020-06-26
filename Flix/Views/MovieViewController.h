@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MovieViewController.h
 //  Flix
 //
 //  Created by Mason Llewellyn on 6/25/20.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface MovieViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
