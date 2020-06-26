@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
 
 @end
 
@@ -26,6 +27,7 @@
     // Do any additional setup after loading the view.
     self.scrollView.delegate = self;
     //self.scrollView.contentSize = self.backgroundView.frame.size;
+    self.title = self.movie[@"title"];
     
     float sizeOfContent = 0;
     UIView *lLast = [self.scrollView.subviews lastObject];
@@ -58,6 +60,11 @@
         
     }
     
+    NSString *datePre_Text = @"Release Date: ";
+    NSString *date = self.movie[@"release_date"];
+    date = [datePre_Text stringByAppendingString:date];
+    
+    self.releaseDateLabel.text = date;
     [self.titleLabel sizeToFit];
     [self.movieDescription sizeToFit];
     

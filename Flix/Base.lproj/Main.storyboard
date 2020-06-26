@@ -140,9 +140,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mut-qi-cCj">
-                                        <rect key="frame" x="26" y="471" width="380" height="406"/>
+                                        <rect key="frame" x="26" y="454" width="380" height="406"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXk-Ar-2ZU">
+                                        <rect key="frame" x="183" y="366" width="196" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -159,6 +166,7 @@
                         <outlet property="backGroundView" destination="Buv-gc-A6E" id="Y4R-M9-hbh"/>
                         <outlet property="backgroundView" destination="Buv-gc-A6E" id="6HL-yL-puM"/>
                         <outlet property="movieDescription" destination="Mut-qi-cCj" id="iXM-in-iek"/>
+                        <outlet property="releaseDateLabel" destination="iXk-Ar-2ZU" id="0Fw-9Z-EgM"/>
                         <outlet property="scrollView" destination="hLl-mQ-lYS" id="htj-wd-1bS"/>
                         <outlet property="secondPoster" destination="10G-lz-5Vp" id="bgy-8K-eWj"/>
                         <outlet property="titleLabel" destination="vAh-0Q-j2S" id="Kns-FX-HPM"/>
