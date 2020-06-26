@@ -93,8 +93,31 @@
     
         NSURL *url = [NSURL URLWithString:fullURL];
         //NSLog(@"Poster path: %@", fullURL);
-        [cell.posterView setImage:nil];
-        [cell.posterView setImageWithURL:url];
+        /*[cell.posterView setImage:nil];
+        [cell.posterView setImageWithURL:url];*/
+
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+        [cell.posterView setImageWithURLRequest:request placeholderImage:nil
+                                        success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                            
+                                            // imageResponse will be nil if the image is cached
+                                            if (imageResponse) {
+                                                cell.posterView.alpha = 0.0;
+                                                cell.posterView.image = image;
+                                                
+                                                //Animate UIImageView back to alpha 1 over 0.3sec
+                                                [UIView animateWithDuration:0.3 animations:^{
+                                                    cell.posterView.alpha = 1.0;
+                                                }];
+                                            }
+                                            else {
+                                                cell.posterView.image = image;
+                                            }
+                                        }
+                                        failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+                                            // do something for the failure condition
+                                        }];
     }
     
     //NSLog(@"Title: %@", movie[@"original_title"]);

@@ -47,10 +47,34 @@
     
     if (posterURL){
         NSString *fullURL = [baseURL stringByAppendingString: posterURL];
-    
-        NSURL *url = [NSURL URLWithString:fullURL];
-        //NSLog(@"Poster path: %@", fullURL);
-        [self.secondPoster setImageWithURL:url];
+        
+            NSURL *url = [NSURL URLWithString:fullURL];
+            //NSLog(@"Poster path: %@", fullURL);
+            /*[cell.posterView setImage:nil];
+            [cell.posterView setImageWithURL:url];*/
+
+            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+        [self.secondPoster setImageWithURLRequest:request placeholderImage:nil
+                                            success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                                
+                                                // imageResponse will be nil if the image is cached
+                                                if (imageResponse) {
+                                                    self.secondPoster.alpha = 0.0;
+                                                    self.secondPoster.image = image;
+                                                    
+                                                    //Animate UIImageView back to alpha 1 over 0.3sec
+                                                    [UIView animateWithDuration:0.3 animations:^{
+                                                        self.secondPoster.alpha = 1.0;
+                                                    }];
+                                                }
+                                                else {
+                                                    self.secondPoster.image = image;
+                                                }
+                                            }
+                                            failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+                                                // do something for the failure condition
+                                            }];
     }
     
     if (backgroundURL){
