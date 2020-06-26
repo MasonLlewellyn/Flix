@@ -53,6 +53,7 @@
             UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 //TODO: Replace this recursion with something better because we could quickly have a stack overflow
                 [self fetchMovies];
+                
             }];
             
             [alert addAction: tryAgainAction];
@@ -82,7 +83,7 @@
     NSDictionary *movie = self.movies[indexPath.row];
     
     
-    cell.titleLabel.text = movie[@"original_title"];
+    cell.titleLabel.text = movie[@"title"];
     cell.descriptionLabel.text = movie[@"overview"];
     
     NSString *baseURL = @"https://image.tmdb.org/t/p/w500";

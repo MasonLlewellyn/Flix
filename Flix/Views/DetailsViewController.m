@@ -9,12 +9,13 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface DetailsViewController ()
+@interface DetailsViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundView;
 @property (weak, nonatomic) IBOutlet UILabel *movieDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *secondPoster;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -23,8 +24,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.scrollView.delegate = self;
+    //self.scrollView.contentSize = self.backgroundView.frame.size;
     
-    self.titleLabel.text = self.movie[@"original_title"];
+    float sizeOfContent = 0;
+    UIView *lLast = [self.scrollView.subviews lastObject];
+    NSInteger wd = lLast.frame.origin.y;
+    NSInteger ht = lLast.frame.size.height;
+
+    sizeOfContent = wd+ht;
+
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, sizeOfContent);
+    
+    self.titleLabel.text = self.movie[@"title"];
     self.movieDescription.text = self.movie[@"overview"];
     
     NSString *baseURL = @"https://image.tmdb.org/t/p/w500";
