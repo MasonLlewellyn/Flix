@@ -56,7 +56,13 @@
                 
             }];
             
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                //Cancelling basically means do nothing
+            }];
+            
             [alert addAction: tryAgainAction];
+            [alert addAction: cancelAction];
+            
             [self presentViewController:alert animated:YES completion:^{
                 // optional code for what happens after the alert controller has finished presenting
             }];

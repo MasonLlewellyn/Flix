@@ -62,7 +62,12 @@
                 [self fetchMovies];
             }];
             
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                //In this case, cancel means do nothing
+            }];
+            
             [alert addAction: tryAgainAction];
+            [alert addAction: cancelAction];
             [self presentViewController:alert animated:YES completion:^{
                 // optional code for what happens after the alert controller has finished presenting
             }];
